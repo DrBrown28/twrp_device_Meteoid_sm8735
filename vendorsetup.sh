@@ -1,5 +1,5 @@
 # Target Architecture
-export TARGET_ARCH="arm64-v8a"
+export TARGET_ARCH="arm64"
 
 # About Us
 export FOX_VERSION="R11.1_4"
