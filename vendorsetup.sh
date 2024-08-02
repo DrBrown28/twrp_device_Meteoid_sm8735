@@ -9,7 +9,6 @@ export FOX_BUILD_TYPE="Stable"
 # Build Environment Stuff
 export FOX_BUILD_DEVICE="Pong"
 export ALLOW_MISSING_DEPENDENCIES=true
-export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export TARGET_DEVICE_ALT="Pong,pong"
 export FOX_TARGET_DEVICES="Pong,pong"
 export TW_DEFAULT_LANGUAGE="en"
