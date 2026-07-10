@@ -11,7 +11,7 @@ $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 ## Device identifier
 PRODUCT_DEVICE := Metroid
-PRODUCT_NAME := fox_Metroid
+PRODUCT_NAME := twrp_Metroid
 PRODUCT_BRAND := Nothing
 PRODUCT_MODEL := A024
 PRODUCT_MANUFACTURER := nothing
