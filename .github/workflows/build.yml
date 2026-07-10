@@ -22,7 +22,7 @@ on:
       DEVICE_PATH:
         description: "Device path device/"
         required: true
-        default: "device/nothing/Metroid"
+        default: "nothing/Metroid"
       DEVICE_NAME:
         description: "Device name"
         required: true
