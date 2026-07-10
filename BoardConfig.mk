@@ -35,19 +35,6 @@ AB_OTA_PARTITIONS := \
     vendor \
     vendor_dlkm
 
-# AB partitions for oplus
-AB_OTA_PARTITIONS += \
-    my_bigball \
-    my_carrier \
-    my_company \
-    my_engineering \
-    my_heytap \
-    my_manifest \
-    my_preload \
-    my_product \
-    my_region \
-    my_stock
-
 # Bootloader
 PRODUCT_PLATFORM                := sun
 TARGET_BOOTLOADER_BOARD_NAME    := sun
@@ -74,7 +61,7 @@ TARGET_INIT_VENDOR_LIB          := //$(DEVICE_PATH):libinit_oplus_sm87xx
 TARGET_RECOVERY_DEVICE_MODULES  := libinit_oplus_sm87xx
 
 # Kernel
-BOARD_KERNEL_IMAGE_NAME     := Image
+BOARD_KERNEL_IMAGE_NAME     := kernel
 BOARD_BOOT_HEADER_VERSION   := 4
 BOARD_KERNEL_PAGESIZE       := 4096
 BOARD_MKBOOTIMG_ARGS        += --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -83,22 +70,32 @@ BOARD_MKBOOTIMG_ARGS        += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_RAMDISK_USE_LZ4       := true
 
 # Partitions
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED  := true
-BOARD_RECOVERYIMAGE_PARTITION_SIZE      := 0x6400000
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
-BOARD_SUPER_PARTITION_SIZE                  := 15569256448
-BOARD_SUPER_PARTITION_GROUPS                := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE           := 15565062144
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor vendor_dlkm odm
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST += my_bigball my_carrier my_company my_engineering my_heytap my_manifest my_preload my_product my_region my_stock
+TARGET_COPY_OUT_VENDOR := vendor
+
+TARGET_COPY_OUT_ODM := odm
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_VENDOR_DLKMIMAGE := true
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+
+BOARD_BOOTIMAGE_PARTITION_SIZE := 104857600
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
+BOARD_SUPER_PARTITION_GROUPS := nothing_dynamic_partitions
+BOARD_NOTHING_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor odm
+BOARD_NOTHING_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
-TARGET_COPY_OUT_ODM             := odm
-TARGET_COPY_OUT_VENDOR          := vendor
 
 # Platform
-TARGET_BOARD_PLATFORM   := sm87xx
-QCOM_BOARD_PLATFORMS    += sm87xx
+TARGET_BOARD_PLATFORM   := sm8735
+QCOM_BOARD_PLATFORMS    += sm8735
 
 # Recovery
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE    := true
@@ -135,7 +132,7 @@ PLATFORM_VERSION                := 99.87.36
 PLATFORM_VERSION_LAST_STABLE    := $(PLATFORM_VERSION)
 PLATFORM_SECURITY_PATCH         := 2099-12-31
 VENDOR_SECURITY_PATCH           := $(PLATFORM_SECURITY_PATCH)
-TW_DEVICE_VERSION               := OPLUS-SM87XX
+TW_DEVICE_VERSION               := Metroid-Dr.Brown28
 
 # Verified Boot
 BOARD_AVB_ENABLE := true

@@ -20,12 +20,6 @@
       "Controller": "cpuset",
       "File": "audio-app/cpus"
     },
-
-    {
-      "Name": "DisplayCapacityCPUs",
-      "Controller": "cpuset",
-      "File": "display/cpus"
-    },
     {
       "Name": "MemStats",
       "Controller": "memory",
@@ -84,32 +78,9 @@
       "File": "cpu.uclamp.latency_sensitive"
     },
     {
-      "Name": "Shares",
-      "Controller": "cpu",
-      "File": "cpu.shares"
-    },
-    {
       "Name": "FreezerState",
       "Controller": "freezer",
       "File": "cgroup.freeze"
-    },
-    {
-      "Name": "BfqWeight",
-      "Controller": "io",
-      "File": "blkio.bfq.weight",
-      "FileV2": "io.bfq.weight"
-    },
-    {
-      "Name": "CfqGroupIdle",
-      "Controller": "io",
-      "File": "blkio.group_idle",
-      "FileV2": "io.group_idle"
-    },
-    {
-      "Name": "CfqWeight",
-      "Controller": "io",
-      "File": "blkio.weight",
-      "FileV2": "io.weight"
     }
   ],
 
@@ -193,6 +164,20 @@
       ]
     },
     {
+      "Name": "HighNtPerformance",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "nt_foreground"
+          }
+        }
+      ]
+    },
+
+    {
       "Name": "MaxPerformance",
       "Actions": [
         {
@@ -231,161 +216,19 @@
         }
       ]
     },
-
     {
-      "Name": "CpuctlMem",
+      "Name": "NtCamAlgoPerformance",
       "Actions": [
         {
           "Name": "JoinCgroup",
           "Params":
           {
             "Controller": "cpu",
-            "Path": "mem"
+            "Path": "ntcam-algo"
           }
         }
       ]
     },
-
-    {
-      "Name": "CpuctlMultimedia",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "multimedia"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlCamera",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "camera"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlDisplay",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "display"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlSstop",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "sstop"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlSsfg",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "ssfg"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlLog",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "log"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlShares1024",
-      "Actions": [
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "Shares",
-            "Value": "1024"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlShare2048",
-      "Actions": [
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "Shares",
-            "Value": "2048"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlShares512",
-      "Actions": [
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "Shares",
-            "Value": "512"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuctlTouch",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "touch"
-          }
-        }
-      ]
-    },
-
     {
       "Name": "AudioAppPerformance",
       "Actions" : [
@@ -422,7 +265,16 @@
             "Controller": "cpu",
             "Path": "dex2oat"
           }
+        },
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "dex2oat"
+          }
         }
+
       ]
     },
     {
@@ -584,6 +436,19 @@
       ]
     },
     {
+      "Name": "ProcessNtCapacityHigh",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "nt_foreground"
+          }
+        }
+      ]
+    },
+    {
       "Name": "ProcessCapacityMax",
       "Actions": [
         {
@@ -593,33 +458,6 @@
             "Controller": "cpuset",
             "Path": "top-app"
           }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuSetHBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-            {
-              "Controller": "cpuset",
-              "Path": "h-background"
-            }
-        }
-      ]
-    },
-    {
-      "Name": "CpuSetLBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-            {
-              "Controller": "cpuset",
-              "Path": "l-background"
-            }
         }
       ]
     },
@@ -665,6 +503,19 @@
       ]
     },
     {
+      "Name": "NtCamAlgoCapacity",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "ntcam-algo"
+          }
+        }
+      ]
+    },
+    {
       "Name": "AudioAppCapacity",
       "Actions" : [
         {
@@ -673,82 +524,6 @@
           {
             "Controller": "cpuset",
             "Path": "audio-app"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "DisplayCapacity",
-      "Actions" : [
-        {
-          "Name" : "JoinCgroup",
-          "Params" :
-          {
-            "Controller": "cpuset",
-            "Path": "display"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "BlkIoLBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "blkio",
-            "Path": "l-background"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "800",
-            "Optional": "true"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "BlkIoHBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "blkio",
-            "Path": "h-background"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "1000",
-            "Optional": "true"
           }
         }
       ]
@@ -777,37 +552,9 @@
             "Controller": "blkio",
             "Path": "bg"
           }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "BfqWeight",
-            "Value": "10",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "200",
-            "Optional": "true"
-          }
         }
       ]
     },
-
     {
       "Name": "LowIoPriority",
       "Actions": [
@@ -817,33 +564,6 @@
           {
             "Controller": "blkio",
             "Path": "background"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "BfqWeight",
-            "Value": "10",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "200",
-            "Optional": "true"
           }
         }
       ]
@@ -858,33 +578,6 @@
             "Controller": "blkio",
             "Path": ""
           }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "BfqWeight",
-            "Value": "100",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "1000",
-            "Optional": "true"
-          }
         }
       ]
     },
@@ -897,33 +590,6 @@
           {
             "Controller": "blkio",
             "Path": ""
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "BfqWeight",
-            "Value": "100",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "1000",
-            "Optional": "true"
           }
         }
       ]
@@ -938,33 +604,6 @@
             "Controller": "blkio",
             "Path": ""
           }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "BfqWeight",
-            "Value": "100",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqGroupIdle",
-            "Value": "0",
-            "Optional": "true"
-          }
-        },
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "CfqWeight",
-            "Value": "1000",
-            "Optional": "true"
-          }
         }
       ]
     },
@@ -976,7 +615,7 @@
           "Name": "SetTimerSlack",
           "Params":
           {
-            "Slack": "5000000"
+            "Slack": "40000000"
           }
         }
       ]
@@ -1002,7 +641,7 @@
           "Params":
           {
             "Controller": "cpuset",
-            "Path": "sf"
+            "Path": "foreground"
           }
         }
       ]
@@ -1015,37 +654,12 @@
           "Params":
           {
             "Controller": "cpuset",
-            "Path": "sf"
+            "Path": "foreground"
           }
         }
       ]
     },
-    {
-      "Name": "CpuSetCameraBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpuset",
-            "Path": "camera-background"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "CpuctlCameraBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "cpu",
-            "Path": "camera-background"
-          }
-        }
-      ]
-    },
+
     {
       "Name": "PerfBoost",
       "Actions": [
@@ -1153,56 +767,12 @@
       "Profiles": [ "ServicePerformance", "LowIoPriority", "TimerSlackNormal" ]
     },
     {
+      "Name": "SCHED_SP_COMPUTE",
+      "Profiles": [ "HighPerformance", "ProcessCapacityHigh", "LowIoPriority", "TimerSlackNormal" ]
+    },
+    {
       "Name": "SCHED_SP_RT_APP",
       "Profiles": [ "RealtimePerformance", "MaxIoPriority", "TimerSlackNormal" ]
-    },
-    {
-      "Name": "SCHED_SP_DISPLAY",
-      "Profiles": [ "HighPerformance", "HighIoPriority", "TimerSlackNormal" ]
-    },
-    {
-      "Name": "SCHED_SP_MEM",
-      "Profiles": [ "CpuctlMem" ]
-    },
-    {
-      "Name": "SCHED_SP_MULTIMEDIA",
-      "Profiles": [ "CpuctlMultimedia" ]
-    },
-    {
-      "Name": "SCHED_SP_CAMERA",
-      "Profiles": [ "CpuctlCamera" ]
-    },
-    {
-      "Name": "SCHED_SP_DISPLAY",
-      "Profiles": [ "CpuctlDisplay" ]
-    },
-    {
-      "Name": "SCHED_SP_SSTOP",
-      "Profiles": [ "CpuctlSstop", "MaxIoPriority", "TimerSlackNormal" ]
-    },
-    {
-      "Name": "SCHED_SP_SSFG",
-      "Profiles": [ "CpuctlSsfg", "HighIoPriority", "TimerSlackNormal" ]
-    },
-    {
-      "Name": "SCHED_SP_LOG",
-      "Profiles": [ "CpuctlLog" ]
-    },
-    {
-      "Name": "SCHED_SP_CPU_SHARES_1024",
-      "Profiles": [ "CpuctlShares1024" ]
-    },
-    {
-      "Name": "SCHED_SP_CPU_SHARES_2048",
-      "Profiles": [ "CpuctlShare2048" ]
-    },
-    {
-      "Name": "SCHED_SP_CPU_SHARES_512",
-      "Profiles": [ "CpuctlShares512" ]
-    },
-    {
-      "Name": "SCHED_SP_TOUCH",
-      "Profiles": [ "CpuctlTouch" ]
     },
     {
       "Name": "CPUSET_SP_DEFAULT",
@@ -1225,10 +795,6 @@
       "Profiles": [ "ServiceCapacityLow", "TimerSlackNormal" ]
     },
     {
-      "Name": "CPUSET_SP_DISPLAY",
-      "Profiles": [ "HighEnergySaving", "ProcessCapacityLow", "LowIoPriority", "TimerSlackHigh" ]
-    },
-    {
       "Name": "CPUSET_SP_RESTRICTED",
       "Profiles": [ "ServiceCapacityRestricted", "TimerSlackNormal" ]
     },
@@ -1238,23 +804,15 @@
     },
     {
       "Name": "Dex2OatBackground",
-      "Profiles": [ "HighEnergySaving", "ProcessCapacityLow", "LowIoPriority", "TimerSlackHigh" ]
+      "Profiles": [ "Dex2OatBootComplete" ]
     },
     {
       "Name": "OtaProfiles",
       "Profiles": [ "ServiceCapacityLow", "LowIoPriority", "HighEnergySaving" ]
     },
     {
-      "Name": "CPUSET_SP_LBACKGROUND",
-      "Profiles": [ "CpuSetLBackground", "BlkIoLBackground"]
-    },
-    {
-      "Name": "CPUSET_SP_HBACKGROUND",
-      "Profiles": [ "CpuSetHBackground", "BlkIoHBackground"]
-    },
-    {
-      "Name": "CPUSET_SP_CAMERA_BACKGROUND",
-      "Profiles": [ "CpuSetCameraBackground", "CpuctlCameraBackground", "LowIoPriority", "TimerSlackHigh" ]
+      "Name": "CPUSET_SP_NT_FOREGROUND",
+      "Profiles": [ "HighNtPerformance", "ProcessNtCapacityHigh", "HighIoPriority", "TimerSlackNormal" ]
     }
   ]
 }
