@@ -1,17 +1,8 @@
-# TWRP device tree for OPLUS sm87xx sreies
+# TWRP device tree for Nothing Phone 3 sm8735
 
 ## Supported devices
 
-- Realme GT7 Pro (CN, GL)
-- Realme GT7 Pro Speed (CN, GL)
-- OnePlus 13T (CN)
-- OnePlus 13s (IN)
-- OnePlus Ace 5 Pro (CN)
-- OnePlus 13 (CN, GL)
-- Realme GT8 (CN)
-- OnePlus Ace 6 (CN)
-- OnePlus Turbo 6 (CN)
-- OnePlus Pad 2 Pro (CN)
+- Nothing Phone 3
 
 ## Build it yourself?
 
@@ -19,12 +10,12 @@
 mkdir twrp && cd twrp
 repo init --depth=1 -u https://github.com/TWRP-Test/platform_manifest_twrp_aosp.git -b twrp-16.0
 repo sync
-git clone --depth=1 https://github.com/kmiit/twrp_device_oplus_sm87xx device/oplus/sm87xx
+git clone --depth=1 https://github.com/DrBrown28/twrp_device_Meteoid_sm8735.git
 ```
 
 ```shell
 source build/envsetup.sh
-lunch twrp_sm87xx
+lunch twrp_Metroid
 make recoveryimage
 ```
 
