@@ -4,7 +4,4 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_Metroid.mk
-
-COMMON_LUNCH_CHOICES := \
-    twrp_Metroid-bp2a-eng
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_Metroid-bp2a-eng
