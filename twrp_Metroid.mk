@@ -17,10 +17,10 @@
 # Only the below variable(s) need to be changed!
 #
 # Identifier for common folder
-COMMON_SOC := sm84xx
+COMMON_SOC := sm87xx
 
 # Define hardware platform
-PRODUCT_PLATFORM := taro
+PRODUCT_PLATFORM := sun
 
 #
 #

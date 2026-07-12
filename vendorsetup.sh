@@ -36,7 +36,7 @@
 #
 # 	Please maintain this if you use this script or any part of it
 #
-FDEVICE="Pong"
+FDEVICE="Metroid"
 
 fox_get_target_device() {
 local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
@@ -60,14 +60,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
     # About Us
     export FOX_MAINTAINER_PATCH_VERSION="2"
-    export OF_MAINTAINER="@phattylol"
+    export OF_MAINTAINER="Dr.Brown28"
     export FOX_BUILD_TYPE="Stable"
 
     # Build Environment Stuff
-    export FOX_BUILD_DEVICE="Pong"
+    export FOX_BUILD_DEVICE="Metroid"
     export ALLOW_MISSING_DEPENDENCIES=true
-    export TARGET_DEVICE_ALT="Pong,pong"
-    export FOX_TARGET_DEVICES="Pong,pong"
+    export TARGET_DEVICE_ALT="Metroid,metroid"
+    export FOX_TARGET_DEVICES="Metroid,metroid"
     export TW_DEFAULT_LANGUAGE="en"
     export LC_ALL="C"
 

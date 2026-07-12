@@ -27,7 +27,7 @@
 -include $(DEVICE_PATH)/BoardConfigCommon.mk
 
 # Recovery
-#TARGET_OTA_ASSERT_DEVICE := Pong
+#TARGET_OTA_ASSERT_DEVICE := Metroid
 
 # TWRP specific build flags
 TW_FRAMERATE := 120
